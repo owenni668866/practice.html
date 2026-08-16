@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive map of 2025 Census tracts in Multnomah County, Oregon.">
+  <title>Multnomah County Census Tracts</title>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.css">
+  <style>
+    * { box-sizing:border-box; }
+    body { margin:0; overflow:hidden; color:#17212b; font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; }
+    #map { position:fixed; inset:0; background:#e9ecef; }
+    .panel { position:fixed; z-index:2; top:20px; left:20px; width:min(360px,calc(100vw - 40px)); padding:20px; background:rgba(255,255,255,.96); border-radius:14px; box-shadow:0 12px 38px rgba(15,23,42,.2); }
+    .eyebrow { margin:0 0 6px; color:#b33028; font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
+    h1 { margin:0; font-size:25px; line-height:1.12; letter-spacing:-.035em; }
+    p { margin:9px 0 0; color:#64748b; font-size:13px; line-height:1.5; }
+    .count { display:block; margin-top:14px; color:#334155; font-size:12px; font-weight:700; }
+    .legend { display:flex; align-items:center; gap:8px; margin-top:10px; color:#64748b; font-size:11px; }
+    .swatch { width:15px; height:15px; border:2px solid #b33028; background:rgba(179,48,40,.13); border-radius:2px; }
+    .loading { position:fixed; right:20px; bottom:28px; z-index:2; padding:8px 11px; border-radius:6px; color:#475569; background:rgba(255,255,255,.9); font-size:12px; box-shadow:0 4px 18px rgba(15,23,42,.14); }
+    .maplibregl-popup-content { padding:14px 15px; font:13px/1.45 Inter,ui-sans-serif,system-ui,sans-serif; }.maplibregl-popup-content h2 { margin:0 20px 5px 0; font-size:16px; }.maplibregl-popup-content p { margin:3px 0; }
+    @media(max-width:550px){.panel{top:10px;left:10px;width:calc(100vw - 20px);padding:15px}}
+  </style>
+</head>
+<body>
+  <main id="map" aria-label="Map of Census tract boundaries in Multnomah County, Oregon"></main>
+  <aside class="panel">
+    <p class="eyebrow">U.S. Census Bureau / 2025</p>
+    <h1>Multnomah County census tracts</h1>
+    <p>Interactive boundaries for the county containing most of Portland. Darker tracts contain a known PFAS site from the included tracker; click a tract for details.</p>
+    <span class="count" id="count">Loading tract boundaries&hellip;</span>
+    <div class="legend"><i class="swatch"></i> Census tract boundary / known PFAS site</div>
+  </aside>
+  <div class="loading" id="loading">Loading GeoJSON&hellip;</div>
+  <script src="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.js"></script>
+  <script>
+    const map = new maplibregl.Map({
+      container:'map', style:'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+      center:[-122.65,45.54], zoom:9.3, minZoom:7
+    });
+    map.addControl(new maplibregl.NavigationControl(),'bottom-right');
+    map.addControl(new maplibregl.ScaleControl({maxWidth:120,unit:'imperial'}),'bottom-left');
+    const safe = value => String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+    async function loadTracts() {
+      const response = await fetch('./multnomah-county-census-tracts.geojson');
+      if (!response.ok) throw new Error(`GeoJSON could not be loaded (${response.status}).`);
+      const tracts = await response.json();
+      document.getElementById('count').textContent = `${tracts.features.length} Census tracts mapped`;
+      document.getElementById('loading').style.display = 'none';
+      map.addSource('tracts',{type:'geojson',data:tracts,promoteId:'GEOID'});
+      map.addLayer({id:'tract-fill',type:'fill',source:'tracts',paint:{'fill-color':['case',['get','PFAS_Has_Known_Site'],'#b33028','#64748b'],'fill-opacity':['case',['boolean',['feature-state','hover'],false],.32,.10]}});
+      map.addLayer({id:'tract-outline',type:'line',source:'tracts',paint:{'line-color':'#9f2a23','line-width':['case',['boolean',['feature-state','hover'],false],2.4,1.05],'line-opacity':.85}});
+      // Fit using the GeoJSON source's calculated bounds without relying on hard-coded geography.
+      const coordinates = tracts.features.flatMap(feature => {
+        const rings = feature.geometry.type === 'Polygon' ? feature.geometry.coordinates : feature.geometry.coordinates.flat();
+        return rings.flat();
+      });
+      const bbox = coordinates.reduce((box,[lng,lat]) => [[Math.min(box[0][0],lng),Math.min(box[0][1],lat)],[Math.max(box[1][0],lng),Math.max(box[1][1],lat)]], [[Infinity,Infinity],[-Infinity,-Infinity]]);
+      map.fitBounds(bbox,{padding:{top:125,right:45,bottom:45,left:405},duration:0});
+      let hoveredId = null;
+      map.on('mousemove','tract-fill',event => { const feature=event.features[0]; if(hoveredId !== null) map.setFeatureState({source:'tracts',id:hoveredId},{hover:false}); hoveredId=feature.id; map.setFeatureState({source:'tracts',id:hoveredId},{hover:true}); map.getCanvas().style.cursor='pointer'; });
+      map.on('mouseleave','tract-fill',()=>{if(hoveredId !== null) map.setFeatureState({source:'tracts',id:hoveredId},{hover:false}); hoveredId=null; map.getCanvas().style.cursor='';});
+      map.on('click','tract-fill',event => { const p=event.features[0].properties; const sites = Array.isArray(p.PFAS_Sites) ? p.PFAS_Sites : []; const siteList = sites.length ? `<p><b>Known PFAS sites:</b> ${sites.map(site => safe(site.site_name)).join(', ')}</p>` : '<p><b>Known PFAS sites:</b> None in included tracker</p>'; new maplibregl.Popup({maxWidth:'300px'}).setLngLat(event.lngLat).setHTML(`<h2>Census Tract ${safe(p.BASENAME || p.TRACT)}</h2><p><b>GEOID:</b> ${safe(p.GEOID)}</p><p><b>PFAS site count:</b> ${safe(p.PFAS_Site_Count || 0)}</p>${siteList}<p><b>County FIPS:</b> ${safe(p.COUNTY)}</p>`).addTo(map); });
+    }
+    map.on('load',()=>loadTracts().catch(error=>{document.getElementById('loading').textContent=error.message;console.error(error);}));
+  </script>
+</body>
+</html>
