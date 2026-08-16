@@ -1,0 +1,20 @@
+﻿{
+    "EuropeGeocodedRecords":  41202,
+    "EuropeUniqueCoordinatePairs":  39869,
+    "USStateFileRecords":  4623,
+    "EuropeanCategoryBreakdown":  [
+                                      {
+                                          "category":  "0",
+                                          "records":  21421
+                                      },
+                                      {
+                                          "category":  "1",
+                                          "records":  19550
+                                      },
+                                      {
+                                          "category":  "2",
+                                          "records":  231
+                                      }
+                                  ],
+    "ComparisonCaveat":  "Counts are not directly comparable: the U.S. files use state-level PFAS Project Lab and Alaska DEC trackers, while the European dataset includes a mixture of contamination, presumptive, production, and user records."
+}
