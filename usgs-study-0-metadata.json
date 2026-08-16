@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Not Found - ScienceBase-Catalog </title>
+    <link rel="shortcut icon" type="image/x-icon" href="/catalog/assets/usgs/images/favicon-5bfbfb2b2c87207eaf65ffdd62fdc7d1.ico"/>
+    
+
+    
+
+    
+        
+        
+            <link rel="stylesheet" href="/catalog/assets/sciencebase-commons-1f154ad693a95badd1d7c8f23a44d94e.css" />
+        
+    
+    <script type="text/javascript" src="/catalog/assets/sciencebase-commons-44f83b10e82913773f84eaf857e84e0c.js" ></script>
+
+    
+
+    
+<link rel="stylesheet" href="/catalog/assets/application-da1c7795ed7d649840e890a975927304.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<script type="text/javascript" src="/catalog/assets/application-4cfab7a4fd90256c4c981cabdadf0b36.js" ></script>
+
+
+
+
+
+  <link rel="stylesheet" href="/catalog/assets/jquery-ui-9fbd24186a79f1ed2c1bfc063d9e43f6.css" />
+  <script type="text/javascript" src="/catalog/assets/jquery-ui-d11fd0e73658a015410c6881dccb88ce.js" ></script>
+
+
+
+    
+    
+    <meta name="X-UA-Compatible" content="IE=7"/>
+    
+
+    
+
+</head>
+
+<body>
+<a href="#sb-container-body" class="sr-only sr-only-focusable">Skip to main content</a>
+
+
+
+
+
+
+
+<div id="sb-header-container" class="sb-visible-if-sb-header">
+
+    
+        <div class="visible-md-block visible-lg-block" style="background: black;">
+            <div class="usgs">
+<!-- BEGIN USGS Header Template -->
+<!-- BEGIN USGS Applications Header Template -->
+<header id="navbar" class="header-nav"  role="banner">
+    <div class="tmp-container">
+        <!-- primary navigation bar -->
+        <!-- search bar-->
+        <div class="header-search">
+            <a class="logo-header" href="https://www.usgs.gov/" title="Home">
+                <img class="img" src="/catalog/assets/usgs/images/logo-859dfa2d26e39da07fb0151fa95ce4cd.png" alt="USGS - science for a changing world" title="U.S. Geological Survey Home Page" />
+
+            </a>
+
+
+
+
+
+
+
+        </div>
+        <!-- end search bar-->
+    </div>
+    <!-- end header-container-->
+</header>
+<!-- END USGS Applications Header Template -->
+</div>
+        </div>
+        <div class="hidden-xs hidden-md hidden-lg" style="background: black;">
+            <img src="/catalog/assets/usgs/images/usgs_logo24c-776c3cfd5566a4566151964b63317343.gif" alt="USGS - science for a changing world" title="U.S. Geological Survey Home Page" width="79" height="24" />
+        </div>
+    
+
+</div>
+
+
+
+
+
+
+<!-- Static navbar -->
+<div class="navbar navbar-inverse sb-app-navbar" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/catalog/" class="navbar-brand sb-navbar-brand"><img style="display:inline;" src="/catalog/assets/sciencebase/images/sb_icon_from_powered_by_logo_trimmed-dddcae4a34a89af6c97e617c26338b70.png" alt="ScienceBase" title="ScienceBase" /><span>ScienceBase-Catalog</span></a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/catalog/community/list" title="View ScienceBase Communities">Communities</a></li>
+
+
+
+
+<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" title="ScienceBase Help" href="https://www.sciencebase.gov/about/using-sciencebase" target="_blank">Help <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+        <li><a title="ScienceBase Information" target="_blank" href="https://www.sciencebase.gov/about">About ScienceBase</a></li>
+        <li><a title="View ScienceBase Help" href="https://www.sciencebase.gov/about/using-sciencebase" target="_blank">ScienceBase Help</a></li>
+         
+        <li role="presentation" class="divider"></li>
+        <li><a title="Report ScienceBase Issue" href="/cdn-cgi/l/email-protection#dba8b8b2beb5b8beb9baa8be9baea8bca8f5bcb4ad" target="_blank">Report a Problem</a></li>
+         
+         
+    </ul>
+</li>
+
+
+
+
+
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+
+
+
+
+
+
+<!-- File: grails-app/views/shared/_app_navbar_nav_user.gsp -->
+
+<!-- Check for token-based authentication first -->
+
+    <!-- Get authentication status directly from SecurityContextHolder -->
+    
+    
+
+    
+        <li>
+                <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">
+                    function __sb_login(){
+                        var u = location.href;
+                        if (u.indexOf("access_token") >= 0) return false;
+                        if (u.indexOf("#") >=0){
+                            u = u.substring(0,u.indexOf("#"));
+                        }
+                        if (u.indexOf("?") < 0) {
+                            u = u + "?access_token=";
+                        }
+                        else {
+                            u = u + "&access_token=";
+                        }
+                        location.href = u;
+                    }
+            </script><a href="#" onclick="__sb_login()"><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i> Log in</a></li>
+    
+
+
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</div>
+
+
+
+
+
+
+
+    <div style="padding-bottom: 8px;"></div>
+
+
+
+<div id="feedback-message" style="display: none; position: fixed; top: 100px; z-index: 999; background: #ffff99; border: 2px dotted #000; padding: 10px; width:100%; text-align: center;"></div>
+
+<!--[if lte IE 9]>
+<div class="alert alert-danger browser-alert" role="alert" style="margin: 30px; padding: 20px; font-size: large;">
+    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to be able to use this application.
+</div>
+<![endif]-->
+
+<div id="no-cookie-support-alert" class="alert alert-warning browser-alert" role="alert" style="display:none;">
+<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+Your browser does not have support for cookies enabled.  Some features of this application will not work.
+</div>
+
+
+
+
+
+
+<div class="container" id="sb-container-body">
+    
+
+<h1>Page Not Found</h1>
+
+
+
+
+
+
+    <div class="alert alert-warning" role="alert">
+        <i class="glyphicon glyphicon-warning-sign" aria-hidden="true"></i>
+        Item not found for ID==json. Either the item does not exist or the item is secured and requires authentication to access.
+    </div>
+
+
+
+
+
+
+</div>
+
+<div class="container">
+    
+    
+        <div class="alert alert-info" role="alert">
+            <div class="h4"><a title="log in" rel="nofollow" class="alert-link" href="#" onclick="__sb_login()"><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i> Log in to view secure content.</a></div>
+        </div>
+    
+
+
+</div>
+
+<div id="sb-footer">
+    
+
+<div id="appfooter" class="container-fluid">
+    <div id="appfootertext" class="row">
+        <div class="col-xs-12">
+            <span class="hidden-xs">ScienceBase-Catalog</span>
+            <span class="visible-xs-inline">App</span>
+            Version: 5.0.29
+            <span class="hidden-xs">
+                |
+                
+ <a title="Report ScienceBase Issue" target="_blank" href="/cdn-cgi/l/email-protection#681b0b010d060b0d0a091b0d281d1b0f1b460f071e">Report a Problem</a>
+|<a title="For General Contact/Questions" target="_blank" href="/cdn-cgi/l/email-protection#7605151f1318151314170513360305110558111900">For General Contact/Questions</a>
+
+
+
+
+
+
+
+                
+                
+                <div style="margin-top: 0.25em;">
+                    
+                        <span style="color: #515151;">
+                            
+                                <br/>Build Version: 2.184.0-749-g7e7023ddb
+                            
+                            
+                                <br/>Build date: (2025-01-08 14:32)
+                            
+                        </span>
+                    
+                    
+                </div>
+            </span>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    <div class="usgs">
+<!-- BEGIN USGS Footer Template -->
+
+<footer class="footer">
+    <div class="tmp-container">
+        <!-- .footer-wrap -->
+        <!-- .footer-doi -->
+        <div class="footer-doi">
+            <!-- footer nav links -->
+            <ul class="menu nav">
+                <li class="first leaf menu-links menu-level-1"><a href="https://www.doi.gov/privacy">DOI Privacy Policy</a></li>
+                <li class="leaf menu-links menu-level-1"><a href="https://www.usgs.gov/laws/policies_notices.html">Legal</a></li>
+                <li class="leaf menu-links menu-level-1"><a href="https://www2.usgs.gov/laws/accessibility.html">Accessibility</a></li>
+                <li class="leaf menu-links menu-level-1"><a href="https://www.usgs.gov/sitemap.html">Site Map</a></li>
+                <li class="last leaf menu-links menu-level-1"><a href="https://answers.usgs.gov/">Contact USGS</a></li>
+            </ul>
+            <!--/ footer nav links -->
+        </div>
+        <!-- /.footer-doi -->
+
+        <hr>
+
+        <!-- .footer-utl-links -->
+        <div class="footer-doi">
+            <ul class="menu nav">
+                <li class="first leaf menu-links menu-level-1"><a href="https://www.doi.gov/">U.S. Department of the Interior</a></li>
+                <li class="leaf menu-links menu-level-1"><a href="https://www.doioig.gov/">DOI Inspector General</a></li>
+                <li class="leaf menu-links menu-level-1"><a href="https://www.whitehouse.gov/">White House</a></li>
+                <li class="leaf menu-links menu-level-1"><a href="https://www.whitehouse.gov/omb/management/egov/">E-gov</a></li>
+                <li class="leaf menu-links menu-level-1"><a href="https://www.doi.gov/pmb/eeo/no-fear-act">No Fear Act</a></li>
+                <li class="last leaf menu-links menu-level-1"><a href="https://www2.usgs.gov/foia">FOIA</a></li>
+            </ul>
+        </div>
+        <!-- /.footer-utl-links -->
+    </div>
+    <!-- /.footer-wrap -->
+</footer>
+<!-- END USGS Footer Template- -->
+</div>
+</div>
+
+
+
+
+
+<div id="about-dialog" title="About" style="display: none;"></div>
+
+
+
+
+                            <iframe src="/catalog/authHelper/reloaderFrame?access_token=" width="0" height="0" style="display: none;"></iframe>
+
+                            <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">
+
+                                var t = setTimeout(loginCheckCookie, 1000);
+
+                                function loginCheckCookie() {
+                                    document.cookie = "kc.quiet=1;path=/catalog;max-age=3000;";
+                                }
+
+                                function triggerReloadForLogin(){
+                                    if (typeof jQuery == 'undefined'){
+                                        document.write("Logging In...");
+                                    }
+                                    else {
+                                        jQuery("<div/>", {
+                                        style: "position: absolute; top: 0px; left: 0px; z-index: 999; background-color: #000000; opacity: 0.3; filter: alpha(opacity=30); width: 100%; height: 100%;"
+                                    }).appendTo("body");
+
+                                    jQuery("<div/>", {
+                                        text: "Logging In...",
+                                        style: "position: absolute; left: 50%; top: 40%; margin-left: -95px; width: 150px; padding: 20px; border: 2px solid #DD0000; background-color: #FFFFFF; z-index: 1000;"
+                                    }).appendTo("body");
+
+                                    }
+
+                                    t = setTimeout(reload, 1000);
+                                }
+
+                                function reload() {
+                                    window.location.reload();
+                                }
+                            </script>
+                            
+
+<script >
+  if (!(navigator.cookieEnabled)){
+      $("#no-cookie-support-alert").show();
+  }
+</script>
+
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2c1781219bf30ad',t:'MTc4Njg5NDEwOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
+

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PFAS research layers | United States</title>
+  <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; } body { margin: 0; font-family: Inter, system-ui, sans-serif; background: #121416; color: #f2f3f3; }
+    #map { position: fixed; inset: 0; } .panel { position: fixed; z-index: 2; top: 18px; left: 18px; max-width: 345px; padding: 18px; border: 1px solid #4b5357; border-radius: 12px; background: rgba(20,23,25,.94); box-shadow: 0 10px 35px #0008; }
+    h1 { font-size: 19px; margin: 0 0 8px; } p { font-size: 13px; line-height: 1.45; margin: 7px 0; color: #d7dbdd; } .key { margin-top: 12px; display: grid; gap: 7px; font-size: 12px; }
+    label { display: flex; align-items: center; gap: 8px; cursor: pointer; } input { accent-color: #55c7da; } .dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; } .orange { background: #ff8a3d; } .blue { background: #55c7da; }
+    .note { margin-top: 12px; padding-top: 10px; border-top: 1px solid #40484c; font-size: 11px; color: #adb5b9; } .maplibregl-popup-content { color: #172025; max-width: 285px; font: 13px/1.35 system-ui,sans-serif; }
+    .maplibregl-popup-content strong { display:block; font-size:14px; margin-bottom:4px; }
+  </style>
+</head>
+<body>
+  <main id="map" aria-label="Map of PFAS research layers"></main>
+  <aside class="panel">
+    <h1>PFAS research layers</h1>
+    <p>Use these layers together to explore where documented contamination and drinking-water detections overlap—or do not.</p>
+    <div class="key">
+      <label><input id="sites" type="checkbox" checked> <i class="dot orange"></i> Known contamination sites</label>
+      <label><input id="ucmr" type="checkbox" checked> <i class="dot blue"></i> EPA UCMR 5 drinking-water detections</label>
+    </div>
+    <p class="note">Blue points are sample records, not unique water systems; repeated samples may share a location. An EPA detection is not a compliance finding. Zoom in to separate clustered detection records.</p>
+  </aside>
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <script>
+    const map = new maplibregl.Map({ container: 'map', center: [-98.5, 39.5], zoom: 3.4,
+      style: { version: 8, sources: { carto: { type: 'raster', tiles: ['https://basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}{r}.png'], tileSize: 256, attribution: '&copy; OpenStreetMap &copy; CARTO' } }, layers: [{ id: 'gray', type: 'raster', source: 'carto' }] } });
+    map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+    const esc = value => String(value ?? 'Not reported').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    map.on('load', async () => {
+      const [siteData, ucmrData] = await Promise.all([fetch('pfas-highest-reported-sites-us.geojson').then(r => r.json()), fetch('epa-ucmr5-pfas-detections.geojson').then(r => r.json())]);
+      map.addSource('known-sites', { type: 'geojson', data: siteData });
+      map.addLayer({ id: 'known-sites', type: 'circle', source: 'known-sites', paint: { 'circle-radius': 5, 'circle-color': '#ff762c', 'circle-stroke-color': '#fff4e8', 'circle-stroke-width': 1, 'circle-opacity': .9 } });
+      map.addSource('ucmr', { type: 'geojson', data: ucmrData, cluster: true, clusterRadius: 42, clusterMaxZoom: 11 });
+      map.addLayer({ id: 'ucmr-clusters', type: 'circle', source: 'ucmr', filter: ['has', 'point_count'], paint: { 'circle-color': '#249bb2', 'circle-radius': ['step', ['get','point_count'], 14, 20, 19, 100, 25], 'circle-opacity': .82, 'circle-stroke-color': '#e8fcff', 'circle-stroke-width': 1 } });
+      map.addLayer({ id: 'ucmr-count', type: 'symbol', source: 'ucmr', filter: ['has', 'point_count'], layout: { 'text-field': '{point_count_abbreviated}', 'text-size': 11 }, paint: { 'text-color': '#ffffff' } });
+      map.addLayer({ id: 'ucmr-points', type: 'circle', source: 'ucmr', filter: ['!', ['has', 'point_count']], paint: { 'circle-radius': 3.5, 'circle-color': '#1e9eb7', 'circle-stroke-color': '#e8fcff', 'circle-stroke-width': .7, 'circle-opacity': .72 } });
+      document.querySelector('#sites').onchange = e => map.setLayoutProperty('known-sites','visibility',e.target.checked ? 'visible':'none');
+      document.querySelector('#ucmr').onchange = e => ['ucmr-clusters','ucmr-count','ucmr-points'].forEach(id => map.setLayoutProperty(id,'visibility',e.target.checked ? 'visible':'none'));
+      map.on('click', 'ucmr-clusters', e => map.getSource('ucmr').getClusterExpansionZoom(e.features[0].properties.cluster_id).then(z => map.easeTo({ center: e.features[0].geometry.coordinates, zoom: z })));
+      map.on('click', 'ucmr-points', e => { const p=e.features[0].properties; new maplibregl.Popup().setLngLat(e.lngLat).setHTML(`<strong>${esc(p.PWS_Name)}</strong><b>${esc(p.Contaminant)}</b>: ${esc(p.Analytical_Result_Value__ng_L_)} ng/L<br>Sample: ${esc(p.Collection_Date)}<br>Population served: ${esc(p.Population_Served)}<br>${esc(p.State)}`).addTo(map); });
+      map.on('click', 'known-sites', e => { const p=e.features[0].properties; new maplibregl.Popup().setLngLat(e.lngLat).setHTML(`<strong>${esc(p.Name || p.Site_Name)}</strong>${esc(p.State)}<br>Reported value: ${esc(p.Reported_PFAS_Level_ppt)} ppt<br>${esc(p.Source || p.Data_Source)}`).addTo(map); });
+      ['known-sites','ucmr-clusters','ucmr-points'].forEach(id => map.on('mouseenter', id, () => map.getCanvas().style.cursor='pointer'));
+      ['known-sites','ucmr-clusters','ucmr-points'].forEach(id => map.on('mouseleave', id, () => map.getCanvas().style.cursor=''));
+    });
+  </script>
+</body>
+</html>
