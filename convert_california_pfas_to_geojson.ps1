@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
-$sourceDir = Join-Path $PSScriptRoot 'california-pfas-data'
+$sourceDir = Join-Path $PSScriptRoot 'data\california\pfas'
 $outputDir = Join-Path $sourceDir 'geojson'
 $tempDir = Join-Path $outputDir '_conversion_temp'
 New-Item -ItemType Directory -Force -Path $outputDir,$tempDir | Out-Null

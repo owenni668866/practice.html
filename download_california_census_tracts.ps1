@@ -1,7 +1,9 @@
 $ErrorActionPreference = 'Stop'
 
 $endpoint = 'https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_ACS2024/MapServer/8/query'
-$output = Join-Path $PSScriptRoot 'california-census-tracts.geojson'
+$output = Join-Path $PSScriptRoot 'data\california\california-census-tracts.geojson'
+$outputParent = Split-Path -Parent $output
+New-Item -ItemType Directory -Force -Path $outputParent | Out-Null
 $pageSize = 1000
 $expected = (Invoke-RestMethod "${endpoint}?where=STATE%3D%2706%27&returnCountOnly=true&f=json").count
 $writer = [IO.StreamWriter]::new($output,$false,[Text.UTF8Encoding]::new($false),1MB)

@@ -25,7 +25,7 @@
   <script src="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.js"></script>
   <script>
     const counties=[
-      ['Multnomah','multnomah-county-census-tracts.geojson'],['Washington','washington-county-census-tracts.geojson'],['Clackamas','clackamas-county-census-tracts.geojson'],['Lane','lane-county-census-tracts.geojson'],['Marion','marion-county-census-tracts.geojson'],['Jackson','jackson-county-census-tracts.geojson']
+      ['Multnomah','data/oregon/multnomah-county-census-tracts.geojson'],['Washington','data/oregon/washington-county-census-tracts.geojson'],['Clackamas','data/oregon/clackamas-county-census-tracts.geojson'],['Lane','data/oregon/lane-county-census-tracts.geojson'],['Marion','data/oregon/marion-county-census-tracts.geojson'],['Jackson','data/oregon/jackson-county-census-tracts.geojson']
     ];
     const map=new maplibregl.Map({container:'map',style:'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',center:[-121.7,44.3],zoom:6.1,minZoom:5});
     map.addControl(new maplibregl.NavigationControl(),'bottom-right');map.addControl(new maplibregl.ScaleControl({maxWidth:120,unit:'imperial'}),'bottom-left');

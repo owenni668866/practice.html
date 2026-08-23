@@ -1,8 +1,8 @@
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName Microsoft.VisualBasic
 
-$inputFile = Join-Path $PSScriptRoot 'california-pfas-data\ca-gama-pfas-statewide.csv'
-$outputDir = Join-Path $PSScriptRoot 'analysis-output'
+$inputFile = Join-Path $PSScriptRoot 'data\california\pfas\ca-gama-pfas-statewide.csv'
+$outputDir = Join-Path $PSScriptRoot 'data\california\analysis'
 New-Item -ItemType Directory -Force -Path $outputDir | Out-Null
 
 $parser = [Microsoft.VisualBasic.FileIO.TextFieldParser]::new($inputFile)

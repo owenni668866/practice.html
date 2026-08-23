@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop'
 
-$destination = Join-Path $PSScriptRoot 'california-pfas-data'
+$destination = Join-Path $PSScriptRoot 'data\california\pfas'
 New-Item -ItemType Directory -Force -Path $destination | Out-Null
 
 $downloads = @(
