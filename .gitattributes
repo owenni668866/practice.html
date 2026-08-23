@@ -2,3 +2,4 @@ california-pfas-data/geojson/_conversion_temp/*.csv filter=lfs diff=lfs merge=lf
 california-pfas-data/*.csv filter=lfs diff=lfs merge=lfs -text
 california-pfas-data/*.xlsx filter=lfs diff=lfs merge=lfs -text
 california-pfas-data/geojson/*.geojson filter=lfs diff=lfs merge=lfs -text
+california-census-tracts.geojson filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive map of California Census tracts from the U.S. Census Bureau TIGERweb ACS 2024 service.">
+  <title>California Census Tracts</title>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.css">
+  <style>
+    *{box-sizing:border-box}body{margin:0;overflow:hidden;color:#17212b;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}#map{position:fixed;inset:0;background:#e9ecef}
+    .panel{position:fixed;z-index:2;top:20px;left:20px;width:min(370px,calc(100vw - 40px));padding:20px;background:rgba(255,255,255,.96);border-radius:14px;box-shadow:0 12px 38px rgba(15,23,42,.2)}
+    .eyebrow{margin:0 0 6px;color:#b33028;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}h1{margin:0;font-size:25px;line-height:1.12;letter-spacing:-.035em}.panel p{margin:9px 0 0;color:#64748b;font-size:13px;line-height:1.5}.count{display:block;margin-top:14px;color:#334155;font-size:12px;font-weight:700}.legend{display:flex;align-items:center;gap:8px;margin-top:10px;color:#64748b;font-size:11px}.swatch{width:15px;height:15px;border:2px solid #b33028;background:rgba(179,48,40,.13);border-radius:2px}.loading{position:fixed;right:20px;bottom:28px;z-index:2;padding:8px 11px;border-radius:6px;color:#475569;background:rgba(255,255,255,.9);font-size:12px;box-shadow:0 4px 18px rgba(15,23,42,.14)}
+    .maplibregl-popup-content{padding:14px 15px;font:13px/1.45 Inter,ui-sans-serif,system-ui,sans-serif}.maplibregl-popup-content h2{margin:0 20px 5px 0;font-size:16px}.maplibregl-popup-content p{margin:3px 0}@media(max-width:550px){.panel{top:10px;left:10px;width:calc(100vw - 20px);padding:15px}}
+  </style>
+</head>
+<body>
+  <main id="map" aria-label="Map of California Census tract boundaries"></main>
+  <aside class="panel"><p class="eyebrow">U.S. Census Bureau / ACS 2024</p><h1>California census tracts</h1><p>Interactive statewide tract boundaries for joining PFAS monitoring locations with Census demographics. Click a tract for identifiers and land area.</p><span class="count" id="count">Loading tract boundaries&hellip;</span><div class="legend"><i class="swatch"></i>Census tract boundary</div></aside>
+  <div class="loading" id="loading">Loading GeoJSON&hellip;</div>
+  <script src="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.js"></script>
+  <script>
+    const map=new maplibregl.Map({container:'map',style:'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',center:[-119.5,37.2],zoom:5.2,minZoom:4});
+    map.addControl(new maplibregl.NavigationControl(),'bottom-right');map.addControl(new maplibregl.ScaleControl({maxWidth:120,unit:'imperial'}),'bottom-left');
+    const safe=value=>String(value??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+    async function loadTracts(){const response=await fetch('./california-census-tracts.geojson');if(!response.ok)throw new Error(`GeoJSON could not be loaded (${response.status}).`);const tracts=await response.json();document.getElementById('count').textContent=`${tracts.features.length.toLocaleString()} Census tracts mapped`;document.getElementById('loading').style.display='none';tracts.features.forEach(f=>{f.id=f.properties.GEOID});map.addSource('tracts',{type:'geojson',data:tracts,promoteId:'GEOID'});map.addLayer({id:'tract-fill',type:'fill',source:'tracts',paint:{'fill-color':'#64748b','fill-opacity':['case',['boolean',['feature-state','hover'],false],.30,.08]}});map.addLayer({id:'tract-outline',type:'line',source:'tracts',paint:{'line-color':'#9f2a23','line-width':['case',['boolean',['feature-state','hover'],false],2.2,.65],'line-opacity':.78}});map.fitBounds([[-124.48,32.53],[-114.13,42.01]],{padding:{top:125,right:45,bottom:45,left:415},duration:0});let hovered=null;map.on('mousemove','tract-fill',event=>{const id=event.features[0].id;if(hovered!==null)map.setFeatureState({source:'tracts',id:hovered},{hover:false});hovered=id;map.setFeatureState({source:'tracts',id:hovered},{hover:true});map.getCanvas().style.cursor='pointer'});map.on('mouseleave','tract-fill',()=>{if(hovered!==null)map.setFeatureState({source:'tracts',id:hovered},{hover:false});hovered=null;map.getCanvas().style.cursor=''});map.on('click','tract-fill',event=>{const p=event.features[0].properties,acres=Number(p.AREALAND||0)/4046.8564224;new maplibregl.Popup({maxWidth:'300px'}).setLngLat(event.lngLat).setHTML(`<h2>${safe(p.NAME||`Census Tract ${p.BASENAME}`)}</h2><p><b>GEOID:</b> ${safe(p.GEOID)}</p><p><b>County FIPS:</b> ${safe(p.COUNTY)}</p><p><b>Tract code:</b> ${safe(p.TRACT)}</p><p><b>Land area:</b> ${acres.toLocaleString(undefined,{maximumFractionDigits:0})} acres</p>`).addTo(map)})}
+    map.on('load',()=>loadTracts().catch(error=>{document.getElementById('loading').textContent=error.message;console.error(error)}));
+  </script>
+</body>
+</html>
