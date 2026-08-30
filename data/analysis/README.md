@@ -15,6 +15,10 @@
 
 Demographics use the 2020–2024 ACS five-year estimates. Total population comes from B01003. Race and ethnicity come from B03002. Tract files include percentages for non-Hispanic White, Black, American Indian/Alaska Native, Asian, Native Hawaiian/Pacific Islander, other race, and multiracial residents, plus Hispanic/Latino residents of any race. These categories are mutually exclusive. “People of color” is total B03002 population minus non-Hispanic White-alone population. Median household income comes from B19013 and is expressed in 2024 inflation-adjusted dollars. Selected margins of error are retained in the tract files.
 
+## Concentration analysis
+
+The `concentration` subfolder contains monitored-tract-only PFOA correlations, state and monitoring-coverage sensitivity checks, a complete analytic extract, preliminary findings, and interactive scatter plots. Run `analyze_pfas_concentration.ps1` from the repository root to reproduce these files.
+
 ## PFAS aggregation
 
 The source inventory contains 589 location records. All 589 were assigned to a 2024 Census tract; 269 tracts contain one or more locations. Tract averages are calculated independently for PFOA, PFOS, total PFAS, and the source-reported PFAS level. Each average has its own observation count and station count.

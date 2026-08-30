@@ -1,0 +1,38 @@
+﻿{
+    "created_utc":  "2026-08-30T16:32:49.7939277Z",
+    "measure":  "PFOA",
+    "unit_note":  "Source values are not harmonized across all source datasets; interpret magnitude cautiously.",
+    "inclusion_rule":  "pfoa_observation_count \u003e 0 and nonmissing pfoa_average",
+    "monitored_tracts":  217,
+    "coverage":  [
+                     {
+                         "state":  "California",
+                         "monitored_tracts":  196,
+                         "stations":  442,
+                         "pfoa_observations":  428,
+                         "median_pfoa":  "47",
+                         "minimum_pfoa":  1,
+                         "maximum_pfoa":  1071530
+                     },
+                     {
+                         "state":  "Oregon",
+                         "monitored_tracts":  7,
+                         "stations":  9,
+                         "pfoa_observations":  8,
+                         "median_pfoa":  "6",
+                         "minimum_pfoa":  1,
+                         "maximum_pfoa":  27450
+                     },
+                     {
+                         "state":  "Washington",
+                         "monitored_tracts":  14,
+                         "stations":  33,
+                         "pfoa_observations":  31,
+                         "median_pfoa":  "336",
+                         "minimum_pfoa":  0,
+                         "maximum_pfoa":  58500
+                     }
+                 ],
+    "concentration_station_count_correlation":  -0.024207833675581679,
+    "concentration_observation_count_correlation":  -0.020759106639472398
+}
