@@ -6,3 +6,4 @@ data/california/pfas/geojson/_conversion_temp/*.csv filter=lfs diff=lfs merge=lf
 data/california/_temporary/*.geojson filter=lfs diff=lfs merge=lfs -text
 data/oregon/oregon-census-tracts.geojson filter=lfs diff=lfs merge=lfs -text
 data/washington/washington-census-tracts.geojson filter=lfs diff=lfs merge=lfs -text
+data/analysis/acs-bulk/*.dat filter=lfs diff=lfs merge=lfs -text

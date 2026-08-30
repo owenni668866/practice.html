@@ -5,5 +5,6 @@
 - `washington/` contains Washington State PFAS sites and statewide Census tracts.
 - `west-coast-pfas-stations.geojson` combines and normalizes the three state PFAS site inventories for mapping.
 - `west-coast-state-boundaries.geojson` contains the three official Census state boundaries.
+- `analysis/` contains the station-to-tract crosswalk, 2024 ACS demographics, compound-specific tract averages, observation counts, map lookup data, and source bulk tables.
 
 Interactive HTML maps remain in the repository root and load their datasets from these folders. `west-coast-pfas-census-map.html` is the common three-state view.

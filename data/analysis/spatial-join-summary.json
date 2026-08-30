@@ -1,0 +1,16 @@
+﻿{
+    "created_utc":  "2026-08-30T16:09:52.3505724Z",
+    "acs_vintage":  "2020-2024 ACS 5-year",
+    "tracts":  11914,
+    "stations_input":  589,
+    "stations_matched":  589,
+    "stations_unmatched":  0,
+    "monitored_tracts":  269,
+    "compound_observation_counts":  {
+                                        "REPORTED_PFAS_LEVEL":  589,
+                                        "PFOS":  351,
+                                        "TOTAL_PFAS":  516,
+                                        "PFOA":  467
+                                    },
+    "primary_comparable_measure":  "PFOA"
+}
