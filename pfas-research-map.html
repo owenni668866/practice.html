@@ -32,7 +32,7 @@
     map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
     const esc = value => String(value ?? 'Not reported').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     map.on('load', async () => {
-      const [siteData, ucmrData] = await Promise.all([fetch('pfas-highest-reported-sites-us.geojson').then(r => r.json()), fetch('epa-ucmr5-pfas-detections.geojson').then(r => r.json())]);
+      const [siteData, ucmrData] = await Promise.all([fetch('data/national/pfas-highest-reported-sites-us.geojson').then(r => r.json()), fetch('data/national/epa/epa-ucmr5-pfas-detections.geojson').then(r => r.json())]);
       map.addSource('known-sites', { type: 'geojson', data: siteData });
       map.addLayer({ id: 'known-sites', type: 'circle', source: 'known-sites', paint: { 'circle-radius': 5, 'circle-color': '#ff762c', 'circle-stroke-color': '#fff4e8', 'circle-stroke-width': 1, 'circle-opacity': .9 } });
       map.addSource('ucmr', { type: 'geojson', data: ucmrData, cluster: true, clusterRadius: 42, clusterMaxZoom: 11 });

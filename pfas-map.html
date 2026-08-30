@@ -68,7 +68,7 @@
     }
 
     async function loadSites() {
-      const response = await fetch('./pfas-sites-alaska.geojson');
+      const response = await fetch('./data/national/state-site-inventory/pfas-sites-alaska.geojson');
       if (!response.ok) throw new Error(`GeoJSON could not be loaded (${response.status}).`);
       const data = await response.json();
       document.getElementById('count').textContent = `${data.features.length.toLocaleString()} mapped locations`;

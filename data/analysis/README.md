@@ -17,13 +17,13 @@ Demographics use the 2020–2024 ACS five-year estimates. Total population comes
 
 ## Concentration analysis
 
-The `concentration` subfolder contains monitored-tract-only PFOA correlations, state and monitoring-coverage sensitivity checks, a complete analytic extract, preliminary findings, and interactive scatter plots. Run `analyze_pfas_concentration.ps1` from the repository root to reproduce these files.
+The `concentration` subfolder contains exploratory monitored-tract-only PFOA correlations, state and monitoring-coverage sensitivity checks, a complete analytic extract, preliminary findings, and interactive scatter plots. These source-reported values are not harmonized across states and must not be treated as a pooled exposure outcome. The `comparability` subfolder contains the controlling data-comparability decision. Run `analyze_pfas_concentration.ps1` from the repository root to reproduce the exploratory files.
 
 ## PFAS aggregation
 
 The source inventory contains 589 location records. All 589 were assigned to a 2024 Census tract; 269 tracts contain one or more locations. Tract averages are calculated independently for PFOA, PFOS, total PFAS, and the source-reported PFAS level. Each average has its own observation count and station count.
 
-PFOA is the initial primary comparable measure because it has the strongest coverage among identified individual compounds: 467 observations, compared with 351 for PFOS. Total PFAS has 516 observations but may combine different analyte lists, so it is retained without treating it as chemically uniform. The source-reported PFAS level has 589 observations but may represent different compounds, matrices, units, and years.
+PFOA is the primary inventory compound displayed because it has the highest availability among identified individual compounds: 467 records, compared with 351 for PFOS. It is not considered directly comparable across states because the inventory omits units, methods, limits, and result qualifiers. Total PFAS has 516 records but may combine different analyte lists, so it is retained without treating it as chemically uniform. The source-reported PFAS level has 589 records but may represent different compounds, matrices, units, and years.
 
 ## Interpretation limits
 

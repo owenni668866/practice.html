@@ -12,5 +12,6 @@
                                         "TOTAL_PFAS":  516,
                                         "PFOA":  467
                                     },
-    "primary_comparable_measure":  "PFOA"
+    "primary_inventory_compound_for_display":  "PFOA",
+    "concentration_comparability":  "Not harmonized across states; see analysis/comparability"
 }

@@ -1,8 +1,10 @@
 # Preliminary tract-level PFAS concentration analysis
 
+> **Comparability warning:** The state inventory files omit units, methods, qualifiers, and detection/reporting limits and mix matrices and site types. These coefficients are exploratory diagnostics of the compiled inventory, not a valid pooled exposure analysis. The documented decision is to avoid pooling concentrations and to rebuild a California-only outcome from harmonized raw results. See `../comparability/west-coast-pfas-comparability-review.md`.
+
 ## Analytic sample
 
-The concentration analysis includes only Census tracts with at least one PFOA measurement and a nonmissing tract-level average. Unmonitored tracts are excluded and are never assigned a concentration of zero. PFOA is used because it has the strongest comparable compound coverage in the compiled station data.
+The concentration analysis includes only Census tracts with at least one source-reported PFOA value and a nonmissing tract-level average. Unmonitored tracts are excluded and are never assigned a concentration of zero. PFOA was selected because it has the highest individual-compound availability in the compiled inventory, not because cross-state comparability has been established.
 
 The analytic sample contains 217 monitored tracts: 196 in California, 7 in Oregon, and 14 in Washington. California therefore accounts for 90% of the sample. There are 428 PFOA observations in California, 8 in Oregon, and 31 in Washington.
 

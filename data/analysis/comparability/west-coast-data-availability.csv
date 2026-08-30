@@ -1,0 +1,4 @@
+state,inventory_records,unique_sites,tracts,acs_population,monitored_tracts,pct_tracts_monitored,unique_sites_per_100_tracts,unique_sites_per_million_people,pfoa_records,pfos_records,total_pfas_records,year_min,year_max,missing_year_records
+California,532,266,9129,39287377,237,2.60,2.91,6.77,428,318,476,2014,2025,8
+Oregon,16,16,1001,4254293,14,1.40,1.60,3.76,8,4,13,2010,2023,1
+Washington,41,21,1784,7816116,18,1.01,1.18,2.69,31,29,27,2016,2023,6
