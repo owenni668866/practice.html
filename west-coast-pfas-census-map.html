@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="California, Oregon, and Washington Census tracts, PFAS monitoring coverage, and reported PFAS concentration.">
+  <title>West Coast PFAS Monitoring &amp; Census Tracts</title>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.css">
+  <style>
+    *{box-sizing:border-box}body{margin:0;overflow:hidden;color:#17212b;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}#map{position:fixed;inset:0;background:#e9ecef}
+    .panel{position:fixed;z-index:2;top:18px;left:18px;width:min(410px,calc(100vw - 36px));max-height:calc(100vh - 36px);overflow:auto;padding:19px;background:rgba(255,255,255,.96);border-radius:14px;box-shadow:0 12px 38px rgba(15,23,42,.22)}
+    .eyebrow{margin:0 0 5px;color:#9f2a23;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}h1{margin:0;font-size:24px;line-height:1.13;letter-spacing:-.035em}.intro,.note{margin:8px 0 12px;color:#64748b;font-size:12px;line-height:1.45}.note{margin-bottom:0;font-size:10px}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:11px 0;border-block:1px solid #e2e8f0}.stats strong{display:block;font-size:17px}.stats span{color:#64748b;font-size:10px}.controls{display:flex;gap:12px;flex-wrap:wrap;margin:11px 0;font-size:11px;font-weight:700}.controls label{display:flex;align-items:center;gap:5px;cursor:pointer}.controls input{accent-color:#9f2a23}
+    .legend-title{margin:10px 0 5px;font-size:11px;font-weight:800}.legend{display:flex;gap:10px;flex-wrap:wrap;color:#64748b;font-size:10px}.legend span{display:flex;align-items:center;gap:5px}.dot{width:11px;height:11px;border-radius:50%;border:1px solid rgba(15,23,42,.35)}.density{width:34px;height:10px;border-radius:5px;background:linear-gradient(90deg,rgba(49,130,189,.15),#3182bd,#08519c)}.line{width:23px;height:0;border-top:2px solid #263746}.tract{width:13px;height:13px;border:1px solid #78909c;background:rgba(100,116,139,.06)}
+    .loading{position:fixed;right:20px;bottom:28px;z-index:2;padding:8px 11px;border-radius:6px;color:#475569;background:rgba(255,255,255,.94);font-size:12px;box-shadow:0 4px 18px rgba(15,23,42,.14)}.maplibregl-popup-content{max-width:330px;padding:14px 15px;font:12px/1.45 Inter,ui-sans-serif,system-ui,sans-serif}.maplibregl-popup-content h2{margin:0 20px 6px 0;font-size:15px}.maplibregl-popup-content p{margin:3px 0}@media(max-width:570px){.panel{top:9px;left:9px;width:calc(100vw - 18px);max-height:47vh;padding:14px}.intro{display:none}}
+  </style>
+</head>
+<body>
+  <main id="map" aria-label="Map of West Coast Census tracts and PFAS monitoring stations"></main>
+  <aside class="panel">
+    <p class="eyebrow">California · Oregon · Washington</p><h1>PFAS monitoring coverage and concentration</h1>
+    <p class="intro">Blue density shows where monitoring locations cluster. Point color and size show source-reported PFAS concentration; hollow gray points have no comparable concentration value. These encodings are intentionally separate.</p>
+    <div class="stats"><div><strong id="tract-count">—</strong><span>Census tracts</span></div><div><strong id="station-count">—</strong><span>PFAS locations</span></div><div><strong id="measured-count">—</strong><span>With concentration</span></div></div>
+    <div class="controls"><label><input id="coverage-toggle" type="checkbox" checked>Coverage density</label><label><input id="concentration-toggle" type="checkbox" checked>Concentration</label><label><input id="tract-toggle" type="checkbox" checked>Census tracts</label></div>
+    <p class="legend-title">Monitoring coverage</p><div class="legend"><span><i class="density"></i>Low → high station density</span></div>
+    <p class="legend-title">Reported concentration</p><div class="legend"><span><i class="dot" style="background:#fee08b"></i>≤10</span><span><i class="dot" style="background:#fdae61"></i>10–100</span><span><i class="dot" style="background:#f46d43"></i>100–1,000</span><span><i class="dot" style="background:#a50026"></i>&gt;1,000</span><span><i class="dot" style="background:#fff;border:2px solid #64748b"></i>No value</span></div>
+    <p class="legend-title">Reference geography</p><div class="legend"><span><i class="tract"></i>2024 Census tract</span><span><i class="line"></i>State boundary</span></div>
+    <p class="note">Concentrations are source-reported and may represent different PFAS totals, analytes, units, matrices, and sampling years. Monitoring density reflects this compiled station inventory—not population-adjusted sampling effort or evidence of contamination.</p>
+  </aside>
+  <div id="loading" class="loading">Loading West Coast datasets…</div>
+  <script src="https://unpkg.com/maplibre-gl@5.1.0/dist/maplibre-gl.js"></script>
+  <script>
+    const tractFiles=[
+      './data/california/california-census-tracts.geojson',
+      './data/oregon/oregon-census-tracts.geojson',
+      './data/washington/washington-census-tracts.geojson'
+    ];
+    const map=new maplibregl.Map({container:'map',style:'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',center:[-121,40],zoom:4.35,minZoom:3.7,maxZoom:15});
+    map.addControl(new maplibregl.NavigationControl(),'bottom-right');map.addControl(new maplibregl.ScaleControl({maxWidth:130,unit:'imperial'}),'bottom-left');
+    const safe=value=>String(value??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+    const visibility=(ids,visible)=>ids.forEach(id=>map.setLayoutProperty(id,'visibility',visible?'visible':'none'));
+    async function json(path){const response=await fetch(path);if(!response.ok)throw new Error(`${path} could not be loaded (${response.status}).`);return response.json()}
+    async function loadData(){
+      const [tracts,states,stations]=await Promise.all([Promise.all(tractFiles.map(json)),json('./data/west-coast-state-boundaries.geojson'),json('./data/west-coast-pfas-stations.geojson')]);
+      document.getElementById('tract-count').textContent=tracts.reduce((n,d)=>n+d.features.length,0).toLocaleString();document.getElementById('station-count').textContent=stations.features.length.toLocaleString();document.getElementById('measured-count').textContent=stations.features.filter(f=>f.properties.concentration_available).length.toLocaleString();document.getElementById('loading').style.display='none';
+      tracts.forEach((data,i)=>{const source=`tracts-${i}`;map.addSource(source,{type:'geojson',data,promoteId:'GEOID'});map.addLayer({id:`tract-fill-${i}`,type:'fill',source,paint:{'fill-color':'#64748b','fill-opacity':.035}});map.addLayer({id:`tract-line-${i}`,type:'line',source,paint:{'line-color':'#78909c','line-width':['interpolate',['linear'],['zoom'],4,.15,9,.75],'line-opacity':['interpolate',['linear'],['zoom'],4,.24,8,.65]}})});
+      map.addSource('stations',{type:'geojson',data:stations});
+      map.addLayer({id:'coverage-density',type:'heatmap',source:'stations',maxzoom:10,paint:{'heatmap-weight':1,'heatmap-intensity':['interpolate',['linear'],['zoom'],4,.55,8,1.5],'heatmap-radius':['interpolate',['linear'],['zoom'],4,13,8,28],'heatmap-opacity':['interpolate',['linear'],['zoom'],4,.72,9,.18],'heatmap-color':['interpolate',['linear'],['heatmap-density'],0,'rgba(49,130,189,0)',.18,'rgba(158,202,225,.45)',.45,'rgba(49,130,189,.65)',.75,'rgba(8,81,156,.75)',1,'rgba(8,48,107,.9)']}});
+      map.addLayer({id:'measured-stations',type:'circle',source:'stations',filter:['==',['get','concentration_available'],true],paint:{'circle-color':['step',['to-number',['get','concentration_numeric']], '#fee08b',10,'#fdae61',100,'#f46d43',1000,'#a50026'],'circle-radius':['interpolate',['linear'],['zoom'],4,['step',['to-number',['get','concentration_numeric']],3.5,10,4.5,100,5.8,1000,7.2],9,['step',['to-number',['get','concentration_numeric']],5,10,6.5,100,8,1000,10]],'circle-stroke-color':'#fff','circle-stroke-width':1,'circle-opacity':.9}});
+      map.addLayer({id:'unmeasured-stations',type:'circle',source:'stations',filter:['!=',['get','concentration_available'],true],paint:{'circle-color':'#fff','circle-radius':['interpolate',['linear'],['zoom'],4,3,9,5],'circle-stroke-color':'#64748b','circle-stroke-width':1.5,'circle-opacity':.9}});
+      map.addSource('states',{type:'geojson',data:states,promoteId:'GEOID'});map.addLayer({id:'state-outline',type:'line',source:'states',paint:{'line-color':'#263746','line-width':['interpolate',['linear'],['zoom'],4,1.4,8,2.4],'line-opacity':.95}});map.addLayer({id:'state-labels',type:'symbol',source:'states',minzoom:3.5,maxzoom:7,layout:{'text-field':['get','STUSAB'],'text-size':13,'text-font':['Open Sans Bold'],'text-letter-spacing':.12},paint:{'text-color':'#263746','text-halo-color':'#fff','text-halo-width':1.5}});
+      ['measured-stations','unmeasured-stations'].forEach(layer=>{map.on('mouseenter',layer,()=>map.getCanvas().style.cursor='pointer');map.on('mouseleave',layer,()=>map.getCanvas().style.cursor='');map.on('click',layer,e=>{const p=e.features[0].properties;const concentration=p.concentration_available===true||p.concentration_available==='true'?`${Number(p.concentration_numeric).toLocaleString()} (source-reported)`:'Not available';new maplibregl.Popup({maxWidth:'330px'}).setLngLat(e.features[0].geometry.coordinates).setHTML(`<h2>${safe(p.site_name||'PFAS monitoring location')}</h2><p><b>State:</b> ${safe(p.map_state)}</p><p><b>Reported concentration:</b> ${safe(concentration)}</p><p><b>Matrix:</b> ${safe(p.matrix||p.matrix_type||'Not stated')}</p><p><b>Industry/source:</b> ${safe(p.industry||'Not stated')}</p><p><b>Year:</b> ${safe(p.year||'Not stated')}</p>`).addTo(map)})});
+      document.getElementById('coverage-toggle').onchange=e=>visibility(['coverage-density'],e.target.checked);document.getElementById('concentration-toggle').onchange=e=>visibility(['measured-stations','unmeasured-stations'],e.target.checked);document.getElementById('tract-toggle').onchange=e=>visibility(tracts.flatMap((_,i)=>[`tract-fill-${i}`,`tract-line-${i}`]),e.target.checked);
+      map.fitBounds([[-124.85,32.3],[-116.7,49.15]],{padding:{top:80,right:35,bottom:35,left:430},duration:0});
+    }
+    map.on('load',()=>loadData().catch(error=>{document.getElementById('loading').textContent=error.message;console.error(error)}));
+  </script>
+</body>
+</html>
