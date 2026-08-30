@@ -13,7 +13,7 @@
 
 ## Demographic definitions
 
-Demographics use the 2020–2024 ACS five-year estimates. Total population comes from B01003. Race and ethnicity come from B03002. “People of color” is total B03002 population minus non-Hispanic White-alone population. Median household income comes from B19013 and is expressed in 2024 inflation-adjusted dollars. Selected margins of error are retained in the tract files.
+Demographics use the 2020–2024 ACS five-year estimates. Total population comes from B01003. Race and ethnicity come from B03002. Tract files include percentages for non-Hispanic White, Black, American Indian/Alaska Native, Asian, Native Hawaiian/Pacific Islander, other race, and multiracial residents, plus Hispanic/Latino residents of any race. These categories are mutually exclusive. “People of color” is total B03002 population minus non-Hispanic White-alone population. Median household income comes from B19013 and is expressed in 2024 inflation-adjusted dollars. Selected margins of error are retained in the tract files.
 
 ## PFAS aggregation
 
