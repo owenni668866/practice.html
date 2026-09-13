@@ -1,0 +1,38 @@
+{
+  "ucmr3": {
+    "url": "https://www.epa.gov/system/files/other-files/2024-04/ucmr3-occurrence-data-by-state.zip",
+    "archive_sha256": "f861cc24acbb9659423b89e057819db50464fb3d5b7cabb6653cad16e42e6a9f",
+    "extraction_recorded_utc": "2026-09-06T10:54:17.143025+00:00",
+    "members": [
+      "UCMR3_All_MA_WY.txt",
+      "UCMR3_All_Tribes_AK_LA.txt"
+    ],
+    "filter": "State.strip() == 'OR'; all analytes preserved in raw extract; no PWSID prefix restriction",
+    "encoding_original": "cp1252",
+    "raw_file": "data/raw/epa/ucmr3-oregon-all-analytes.csv",
+    "raw_sha256": "cd4d44d01729af71c776965381786fb1854afe88a6577c3faade767d54c60dc0",
+    "raw_rows": 11887,
+    "reference_documents": [
+      "data/reference/ucmr3/Instructions for Accessing UCMR Results_508.pdf",
+      "data/reference/ucmr3/UCMR3_DataSummary_508.pdf"
+    ]
+  },
+  "ucmr5": {
+    "url": "https://www.epa.gov/system/files/other-files/2023-08/ucmr5-occurrence-data-by-state.zip",
+    "archive_sha256": "4845eb3abf34d61d7d239e26a815c69b21e39d249840243d266274b5b5d73aaa",
+    "extraction_recorded_utc": "2026-09-06T10:54:20.852397+00:00",
+    "members": [
+      "UCMR5_All_MA_WY.txt",
+      "UCMR5_All_Tribes_AK_LA.txt"
+    ],
+    "filter": "State.strip() == 'OR'; all analytes preserved in raw extract; no PWSID prefix restriction",
+    "encoding_original": "cp1252",
+    "raw_file": "data/raw/epa/ucmr5-oregon-all-analytes.csv",
+    "raw_sha256": "af59698a2a0ffb3f4895f5bff5f837ef12fbcfff113aa4d4002db37bbf4fa3a0",
+    "raw_rows": 21990,
+    "reference_documents": [
+      "data/reference/ucmr5/UCMR5_DataSummary_Jul2026_508.pdf",
+      "data/reference/ucmr5/InstructionsforAccessingUCMRResults_Jan2025_508.pdf"
+    ]
+  }
+}

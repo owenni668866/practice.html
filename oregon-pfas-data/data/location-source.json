@@ -1,0 +1,7 @@
+{
+  "url": "https://services.arcgis.com/cJ9YHowT8TU7DUyn/ArcGIS/rest/services/PFAS_Analytic_Tools_Layers/FeatureServer/1/query?where=State+LIKE+%27%25OR%25%27&outFields=F_PWS_ID%2CPWS_Name%2CLatitude%2CLongitude%2CUCMR_Geolocation_Method&returnGeometry=false&returnDistinctValues=true&f=json",
+  "retrieved_utc": "2026-09-06T11:15:24.076022+00:00",
+  "sha256": "dd301ee32d1fecb6e6bf2e92d66ba43843e729247e9a87780b4cb146d6c77110",
+  "purpose": "Join location context to UCMR5 by PWSID; service area / ZIP / county centroids, not sample coordinates",
+  "file": "data/raw/epa/ucmr5-system-locations.json"
+}

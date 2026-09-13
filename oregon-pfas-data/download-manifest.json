@@ -1,0 +1,248 @@
+﻿{
+    "downloaded_utc":  "2026-09-13T16:31:14.4994279Z",
+    "source":  "https://jakobzhao.github.io/pfas/",
+    "scope":  "All data files discovered in public pages, documentation, source manifests and build scripts. Private repository contents cannot be enumerated.",
+    "verified":  "Both raw EPA CSV hashes and location JSON hash match published manifests; main CSV has 23787 records.",
+    "files":  [
+                  {
+                      "path":  "index.html",
+                      "source_url":  "https://jakobzhao.github.io/pfas/index.html",
+                      "bytes":  3210,
+                      "sha256":  "9cf7456a1a94c8f5a999f8f2041558de30c7b1ca8202e2394e1f7c9a42631082"
+                  },
+                  {
+                      "path":  "planner.html",
+                      "source_url":  "https://jakobzhao.github.io/pfas/planner.html",
+                      "bytes":  6869,
+                      "sha256":  "5a06dd8352c5d1c8f9454b1c20b2728a4d521ea65c15302e7e4ac0e5ef8a2eba"
+                  },
+                  {
+                      "path":  "README.md",
+                      "source_url":  "https://jakobzhao.github.io/pfas/README.md",
+                      "bytes":  6979,
+                      "sha256":  "abfc1381125dd4e247c8a989caa89f696eba75567a54ea0c75903aeffa10dd43"
+                  },
+                  {
+                      "path":  "report.html",
+                      "source_url":  "https://jakobzhao.github.io/pfas/report.html",
+                      "bytes":  32190,
+                      "sha256":  "990a6153f78eaebbe6fea65ab8989c7df150602b6c48efe03125f23c4542f1aa"
+                  },
+                  {
+                      "path":  "assets/basemap.json",
+                      "source_url":  "https://jakobzhao.github.io/pfas/assets/basemap.json",
+                      "bytes":  43189,
+                      "sha256":  "1929febe64450d83e7855277db33a76a1be196f660b86b072d8fcfb7db13d1dc"
+                  },
+                  {
+                      "path":  "assets/map.css",
+                      "source_url":  "https://jakobzhao.github.io/pfas/assets/map.css",
+                      "bytes":  6767,
+                      "sha256":  "43586b2b08bc2f65b79e19a08ba3a78660f3008d43873da3c5d5c96447686f83"
+                  },
+                  {
+                      "path":  "assets/map.js",
+                      "source_url":  "https://jakobzhao.github.io/pfas/assets/map.js",
+                      "bytes":  7885,
+                      "sha256":  "000c91f794e8b421cd99bb41cfe425a5455574e2274861cb4e6aed4e75c264aa"
+                  },
+                  {
+                      "path":  "assets/planner-core.mjs",
+                      "source_url":  "https://jakobzhao.github.io/pfas/assets/planner-core.mjs",
+                      "bytes":  2896,
+                      "sha256":  "dfad5c584133e7da2549e458e04fc1be12454e548a4bb45fa455cc1a4396ba7b"
+                  },
+                  {
+                      "path":  "assets/planner.css",
+                      "source_url":  "https://jakobzhao.github.io/pfas/assets/planner.css",
+                      "bytes":  4078,
+                      "sha256":  "54922912f81356bf2032d3b0c09888afd21533e9768cab8f88298ea07af40d50"
+                  },
+                  {
+                      "path":  "assets/planner.mjs",
+                      "source_url":  "https://jakobzhao.github.io/pfas/assets/planner.mjs",
+                      "bytes":  10959,
+                      "sha256":  "14f432a05320461e862f8e446d104a8abfe9f16815c460b5f699e1d7568909cb"
+                  },
+                  {
+                      "path":  "assets/vendor/maplibre-gl.css",
+                      "source_url":  "https://jakobzhao.github.io/pfas/assets/vendor/maplibre-gl.css",
+                      "bytes":  69430,
+                      "sha256":  "43c1d886b5fdf0aac4e7135bd6f84b823d9f48283a648012665f9be52c01389f"
+                  },
+                  {
+                      "path":  "assets/vendor/maplibre-gl.js",
+                      "source_url":  "https://jakobzhao.github.io/pfas/assets/vendor/maplibre-gl.js",
+                      "bytes":  937395,
+                      "sha256":  "1525f971223d81f169f049f1ce50083e6f1643aa6b0ea0716653a550d2d57fc2"
+                  },
+                  {
+                      "path":  "data/location-source.json",
+                      "source_url":  "https://jakobzhao.github.io/pfas/data/location-source.json",
+                      "bytes":  603,
+                      "sha256":  "9559498f219b966643392dfd30914b346bdd3afc0c812356bd4f4836c3bf6559"
+                  },
+                  {
+                      "path":  "data/source_manifest.json",
+                      "source_url":  "https://jakobzhao.github.io/pfas/data/source_manifest.json",
+                      "bytes":  1707,
+                      "sha256":  "73e9a36c4b77dc313ec860052d305b3d09c6fb9fb9f9def9c0711c93dff512a0"
+                  },
+                  {
+                      "path":  "data/processed/analyte-method-limits.csv",
+                      "source_url":  "https://jakobzhao.github.io/pfas/data/processed/analyte-method-limits.csv",
+                      "bytes":  2680,
+                      "sha256":  "a8e74a7f7a1f60312ecbe1e748acba88d5daf87030af712ea98715d96ab9edf9"
+                  },
+                  {
+                      "path":  "data/processed/audit.json",
+                      "source_url":  "https://jakobzhao.github.io/pfas/data/processed/audit.json",
+                      "bytes":  2742,
+                      "sha256":  "de4c50a81dc4761e908bb9fa92266d8471931f95fee358249fa892353b1f18cf"
+                  },
+                  {
+                      "path":  "data/processed/common-analyte-threshold-comparison.csv",
+                      "source_url":  "https://jakobzhao.github.io/pfas/data/processed/common-analyte-threshold-comparison.csv",
+                      "bytes":  300,
+                      "sha256":  "5e5cc41ee9b7876ff1892979818dfcf4fb40d65a7679d2a3aa643433229f80f4"
+                  },
+                  {
+                      "path":  "data/processed/oregon-map.json",
+                      "source_url":  "https://jakobzhao.github.io/pfas/data/processed/oregon-map.json",
+                      "bytes":  322860,
+                      "sha256":  "3af896e423695f13813d81f46aca3f483b04779a9f68f6ff5bf95a6b4ea8e071"
+                  },
+                  {
+                      "path":  "data/processed/oregon-pfas-results.csv",
+                      "source_url":  "https://jakobzhao.github.io/pfas/data/processed/oregon-pfas-results.csv",
+                      "bytes":  4716110,
+                      "sha256":  "1948f78a4d05b1e83767e912089f0b81b8290c412dbb5008a782bda709e857ae"
+                  },
+                  {
+                      "path":  "data/processed/owen-reconciliation.json",
+                      "source_url":  "https://jakobzhao.github.io/pfas/data/processed/owen-reconciliation.json",
+                      "bytes":  394,
+                      "sha256":  "31cdd2c71fdcce5b2e4d833b611c3061371f58fa7cea58e1a3b9b5b7ed3d10b7"
+                  },
+                  {
+                      "path":  "data/processed/planner-candidates.json",
+                      "source_url":  "https://jakobzhao.github.io/pfas/data/processed/planner-candidates.json",
+                      "bytes":  398975,
+                      "sha256":  "c0a591b7a015ed58a4aa581f992ec3da9ca65885314f0a347ddff5f2ea5b6b7e"
+                  },
+                  {
+                      "path":  "data/processed/system-summary.csv",
+                      "source_url":  "https://jakobzhao.github.io/pfas/data/processed/system-summary.csv",
+                      "bytes":  15118,
+                      "sha256":  "35b3b6c9baf729936d090f320e144b1e442e845d9126bc8a35d41f4c073706ea"
+                  },
+                  {
+                      "path":  "data/raw/epa/ucmr3-oregon-all-analytes.csv",
+                      "source_url":  "https://jakobzhao.github.io/pfas/data/raw/epa/ucmr3-oregon-all-analytes.csv",
+                      "bytes":  2125949,
+                      "sha256":  "cd4d44d01729af71c776965381786fb1854afe88a6577c3faade767d54c60dc0"
+                  },
+                  {
+                      "path":  "data/raw/epa/ucmr5-oregon-all-analytes.csv",
+                      "source_url":  "https://jakobzhao.github.io/pfas/data/raw/epa/ucmr5-oregon-all-analytes.csv",
+                      "bytes":  3574975,
+                      "sha256":  "af59698a2a0ffb3f4895f5bff5f837ef12fbcfff113aa4d4002db37bbf4fa3a0"
+                  },
+                  {
+                      "path":  "data/raw/epa/ucmr5-system-locations.json",
+                      "source_url":  "https://jakobzhao.github.io/pfas/data/raw/epa/ucmr5-system-locations.json",
+                      "bytes":  28064,
+                      "sha256":  "dd301ee32d1fecb6e6bf2e92d66ba43843e729247e9a87780b4cb146d6c77110"
+                  },
+                  {
+                      "path":  "data/reference/carto-positron-style.json",
+                      "source_url":  "https://jakobzhao.github.io/pfas/data/reference/carto-positron-style.json",
+                      "bytes":  45865,
+                      "sha256":  "698ccff4e9010f4b56196ed14eb09cad7da9bf0ea1e6cdb16d11c58bef5c0197"
+                  },
+                  {
+                      "path":  "data/reference/owen-oregon-ucmr5-detections.json",
+                      "source_url":  "https://jakobzhao.github.io/pfas/data/reference/owen-oregon-ucmr5-detections.json",
+                      "bytes":  138035,
+                      "sha256":  "ddeac165b33f1c9797086bf464e41b6a18b17abafcd5d3f523258b5f1f9d4594"
+                  },
+                  {
+                      "path":  "data/reference/ucmr3/Instructions for Accessing UCMR Results_508.pdf",
+                      "source_url":  "https://jakobzhao.github.io/pfas/data/reference/ucmr3/Instructions for Accessing UCMR Results_508.pdf",
+                      "bytes":  359447,
+                      "sha256":  "4bfaea6ae316320e89683410504d964fa8cd9509ad63d06d974f6d640fcf2aad"
+                  },
+                  {
+                      "path":  "data/reference/ucmr3/UCMR3_DataSummary_508.pdf",
+                      "source_url":  "https://jakobzhao.github.io/pfas/data/reference/ucmr3/UCMR3_DataSummary_508.pdf",
+                      "bytes":  461824,
+                      "sha256":  "e37caa0027106874560d0cc34f5056e634c70ec28a78f469b67ee46573fa581a"
+                  },
+                  {
+                      "path":  "data/reference/ucmr5/InstructionsforAccessingUCMRResults_Jan2025_508.pdf",
+                      "source_url":  "https://jakobzhao.github.io/pfas/data/reference/ucmr5/InstructionsforAccessingUCMRResults_Jan2025_508.pdf",
+                      "bytes":  357942,
+                      "sha256":  "24af0823416b067188e0dac405baed925b4033a2a40942b75c41ef5c7b33715b"
+                  },
+                  {
+                      "path":  "data/reference/ucmr5/UCMR5_DataSummary_Jul2026_508.pdf",
+                      "source_url":  "https://jakobzhao.github.io/pfas/data/reference/ucmr5/UCMR5_DataSummary_Jul2026_508.pdf",
+                      "bytes":  526036,
+                      "sha256":  "fb1f0ea05822dcb99cd1cefab030f55f6295fe0409bc9a971a9a6572b2666e24"
+                  },
+                  {
+                      "path":  "docs/data-quality.md",
+                      "source_url":  "https://jakobzhao.github.io/pfas/docs/data-quality.md",
+                      "bytes":  5334,
+                      "sha256":  "6bce0601dbd3dc051f3c44757371a789fe9923a08bf85218dc3b46898b064bbb"
+                  },
+                  {
+                      "path":  "docs/research-strategy.md",
+                      "source_url":  "https://jakobzhao.github.io/pfas/docs/research-strategy.md",
+                      "bytes":  5165,
+                      "sha256":  "373508cfdeb71f7b46e9580ac96b1a431f7d2426826adc569fabac33113011ff"
+                  },
+                  {
+                      "path":  "notebooks/audit.ipynb",
+                      "source_url":  "https://jakobzhao.github.io/pfas/notebooks/audit.ipynb",
+                      "bytes":  2158,
+                      "sha256":  "33ca0c94d31f91862146fdca38c9caa9c441fa8c6c782d872854d599c1d865b4"
+                  },
+                  {
+                      "path":  "scripts/build.py",
+                      "source_url":  "https://jakobzhao.github.io/pfas/scripts/build.py",
+                      "bytes":  7577,
+                      "sha256":  "5d88a8823bc91fd6f6a1deadf6d6798cdf39c89f876026adc2943ef6a111d5fb"
+                  },
+                  {
+                      "path":  "scripts/build_map.py",
+                      "source_url":  "https://jakobzhao.github.io/pfas/scripts/build_map.py",
+                      "bytes":  3604,
+                      "sha256":  "5b78e3e2da5bbdc0c7d58b07a56f20f8653c67bc5bace1d2f6918194f1e7f838"
+                  },
+                  {
+                      "path":  "scripts/build_planner.py",
+                      "source_url":  "https://jakobzhao.github.io/pfas/scripts/build_planner.py",
+                      "bytes":  1149,
+                      "sha256":  "62d7f35e3a0d0dc591902e1035ad904088d6e0306071a5ab3f9e8d5bf3a2bef6"
+                  },
+                  {
+                      "path":  "scripts/check.py",
+                      "source_url":  "https://jakobzhao.github.io/pfas/scripts/check.py",
+                      "bytes":  4211,
+                      "sha256":  "8bf1be33f0b3f081ce42eacd6e5fe2f850304e452c76c1c1df5778a32b41330d"
+                  },
+                  {
+                      "path":  "scripts/reconcile_owen.py",
+                      "source_url":  "https://jakobzhao.github.io/pfas/scripts/reconcile_owen.py",
+                      "bytes":  2031,
+                      "sha256":  "7c8b333555e961bfa98aeca2d2d428e87a037f26aa3ffc6db16952f7c2c75921"
+                  },
+                  {
+                      "path":  "scripts/report.py",
+                      "source_url":  "https://jakobzhao.github.io/pfas/scripts/report.py",
+                      "bytes":  5641,
+                      "sha256":  "fb2380eae272f4167dc29d16b46026b113e7cd1fd0222dd408ca263e62ff7647"
+                  }
+              ]
+}

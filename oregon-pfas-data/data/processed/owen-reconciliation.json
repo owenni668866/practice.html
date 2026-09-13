@@ -1,0 +1,9 @@
+{
+  "old_detected_records": 92,
+  "official_detected_records": 92,
+  "matched_records": 92,
+  "old_only": 0,
+  "official_only": 0,
+  "comparison_key": "PWSID, facility, point, date, SampleID, analyte, concentration ng/L",
+  "warning": "Inherited locations are service-area or ZIP centroids, not sampling coordinates; reference only. Do not append these duplicate detections to main results."
+}

@@ -1,0 +1,96 @@
+{
+  "scope": "State=OR in both EPA archive partitions; PFAS only in processed tables; public drinking water only. Not all Oregon monitoring.",
+  "programs": {
+    "UCMR3": {
+      "analytical_records": 2526,
+      "systems": 65,
+      "sample_keys": 421,
+      "point_date_groups": 421,
+      "analytes": 6,
+      "detected_records": 0,
+      "systems_with_detections": 0,
+      "first_collection": "2013-01-16",
+      "last_collection": "2015-12-21"
+    },
+    "UCMR5": {
+      "analytical_records": 21261,
+      "systems": 127,
+      "sample_keys": 897,
+      "point_date_groups": 812,
+      "analytes": 29,
+      "detected_records": 92,
+      "systems_with_detections": 18,
+      "first_collection": "2023-01-09",
+      "last_collection": "2026-06-08"
+    }
+  },
+  "unique_systems_across_programs": 133,
+  "ucmr5_records_after_2025": 108,
+  "duplicate_candidate_keys": [],
+  "below_mrl_with_numeric_values": 0,
+  "checks_passed": [
+    "Raw snapshot SHA-256",
+    "Original unit is micrograms/L; conversion factor 1000",
+    "All signs are < or =",
+    "Nondetect values remain blank",
+    "Detected values are at or above MRL",
+    "Dates parse",
+    "All PFAS records retained without deduplication"
+  ],
+  "threshold_comparison": [
+    {
+      "analyte": "PFBS",
+      "ucmr3_mrl_ng_l": "90.00",
+      "ucmr3_records": 421,
+      "ucmr5_records": 732,
+      "ucmr5_detected_at_own_mrl": 17,
+      "ucmr5_at_or_above_ucmr3_mrl": 0,
+      "ucmr5_indeterminate_at_ucmr3_mrl": 0
+    },
+    {
+      "analyte": "PFHpA",
+      "ucmr3_mrl_ng_l": "10.00",
+      "ucmr3_records": 421,
+      "ucmr5_records": 733,
+      "ucmr5_detected_at_own_mrl": 5,
+      "ucmr5_at_or_above_ucmr3_mrl": 0,
+      "ucmr5_indeterminate_at_ucmr3_mrl": 0
+    },
+    {
+      "analyte": "PFHxS",
+      "ucmr3_mrl_ng_l": "30.00",
+      "ucmr3_records": 421,
+      "ucmr5_records": 732,
+      "ucmr5_detected_at_own_mrl": 16,
+      "ucmr5_at_or_above_ucmr3_mrl": 1,
+      "ucmr5_indeterminate_at_ucmr3_mrl": 0
+    },
+    {
+      "analyte": "PFNA",
+      "ucmr3_mrl_ng_l": "20.00",
+      "ucmr3_records": 421,
+      "ucmr5_records": 733,
+      "ucmr5_detected_at_own_mrl": 0,
+      "ucmr5_at_or_above_ucmr3_mrl": 0,
+      "ucmr5_indeterminate_at_ucmr3_mrl": 0
+    },
+    {
+      "analyte": "PFOA",
+      "ucmr3_mrl_ng_l": "20.00",
+      "ucmr3_records": 421,
+      "ucmr5_records": 733,
+      "ucmr5_detected_at_own_mrl": 7,
+      "ucmr5_at_or_above_ucmr3_mrl": 0,
+      "ucmr5_indeterminate_at_ucmr3_mrl": 0
+    },
+    {
+      "analyte": "PFOS",
+      "ucmr3_mrl_ng_l": "40.00",
+      "ucmr3_records": 421,
+      "ucmr5_records": 732,
+      "ucmr5_detected_at_own_mrl": 26,
+      "ucmr5_at_or_above_ucmr3_mrl": 0,
+      "ucmr5_indeterminate_at_ucmr3_mrl": 0
+    }
+  ]
+}
